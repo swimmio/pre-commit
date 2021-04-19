@@ -4,3 +4,4 @@
   name: swimm-verify
   description: Verify all Swimm documentation to be current
   entry: hooks/swimm-verify.sh
+  language: script
