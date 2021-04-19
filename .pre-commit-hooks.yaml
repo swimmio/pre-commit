@@ -1,0 +1,6 @@
+# This is the file that ties Swimm's pre-commit hooks to actions needed to run. 
+
+- id: swimm-verify
+  name: swimm-verify
+  description: Verify all Swimm documentation to be current
+  entry: hooks/swimm-verify.sh
