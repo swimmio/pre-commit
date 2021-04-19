@@ -1,0 +1,6 @@
+# Keep from accidentally tracking editor save files, since I work on 4 different operating systems :)
+
+*.sav
+*.bak
+*.tmp
+
