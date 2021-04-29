@@ -5,3 +5,9 @@
   description: Verify all Swimm documentation to be current
   entry: hooks/swimm-verify.sh
   language: script
+
+- id: swimm-export
+  name: swimm-export
+  description: Export swimm documentation against the current version
+  entry: hooks/swimm-export.sh
+  language: script
