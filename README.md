@@ -7,11 +7,12 @@ Secondly, put the following contents into `.pre-commit-config.yaml` in the root 
 ```
 repos:
   - repo: https://github.com/swimmio/pre-commit
-    rev: v0.2 # (Check release tags for the latest release, currently v0.2)
+    rev: v0.3 # (Check release tags for the latest release, currently v0.3)
     hooks:
-      - id: swimm-verify
+      - id: swimm-verify # Verifies documentation is in sync
+      - id: swimm-export # Exports to markdown (optional)
 ```
 
 If you already have a `.pre-commit-config.yaml` file, add the swimm checks as a new `- repo` section, wherever you'd like them to run. Note that if you have failure mode set to fast, no other checks will run if documentation can't be verified, so we recommend adding Swimm as the last (or close to last) check. 
 
-Please report bugs to Tim Post <tim@swimm.io> 
+Please report bugs to Tim Post <tim@swimm.io> or here on GH. 
