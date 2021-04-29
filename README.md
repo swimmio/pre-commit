@@ -15,4 +15,8 @@ repos:
 
 If you already have a `.pre-commit-config.yaml` file, add the swimm checks as a new `- repo` section, wherever you'd like them to run. Note that if you have failure mode set to fast, no other checks will run if documentation can't be verified, so we recommend adding Swimm as the last (or close to last) check. 
 
+Note: The hooks are currently implemented as bash scripts; Windows users need to run WSL in order to use them for now. I'm planning to do it agnostically just with Python in the near future.
+
+If you create any new hooks, feel free to send a PR over.
+
 Please report bugs to Tim Post <tim@swimm.io> or here on GH. 
