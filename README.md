@@ -7,7 +7,7 @@ Secondly, put the following contents into `.pre-commit-config.yaml` in the root 
 ```
 repos:
   - repo: https://github.com/swimmio/pre-commit
-    rev: v0.4 # (Check release tags for the latest release, currently v0.4)
+    rev: v0.3 # (Check release tags for the latest release, current preview release is v0.4)
     hooks:
       - id: swimm-verify # Verifies documentation is in sync
 ```

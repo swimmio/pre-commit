@@ -1,7 +1,7 @@
 # What hooks are available?
 
  - `swimm-verify` will run Swimm's verification checks, and exit nonzero if they fail. Recommended.
- - `swimm-verify-nonblocking` Like swimm-verify, but will always return successfully. Webooks are used to open an issue if verification fails.
+ - `swimm-verify-nonblocking` (v0.4 only) Like swimm-verify, but will always return successfully. Webooks are used to open an issue if verification fails.
  - `swimm-export` An example of exporting Swimm docs for third-party documentation hubs like Confluence & Notion
 
 All hooks will currently work with the web or desktop version of swimm. If you
@@ -16,7 +16,7 @@ This is the simplest (and most ideal) configuration. The verification check will
 return nonzero if something requires attention. Documentation failing verification
 will be treated just like any other test that fails.
 
-## The `swimm-verify-nonblocking` Hook:
+## The `swimm-verify-nonblocking` Hook (v0.4 only):
 
 This hook allows documentation verification checks to proceed, and will (optionally)
 call a webhook that opens an issue at Github, Bitbucket, Jira, Trello Or anything
