@@ -44,6 +44,8 @@ verify_tmp() {
 }
 
 download_cli() {
+    error_out "Downloading the CLI on-the-fly will be available soon."
+    # This currently downloads a compiled script that still requires node, but will soon resolve to a 64 Bit ELF executable.
     src=$($BIN_CURL -s https://api.github.com/repos/swimmio/SwimmReleases/releases/latest | grep 'browser_download_url.*swimm-cli' | cut -d '"' -f 4)
     $BIN_WGET -O $BIN_PATH/swimm_cli $src
     chmod +x $BIN_PATH/swimm_cli
