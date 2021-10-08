@@ -7,10 +7,17 @@ Secondly, put the following contents into `.pre-commit-config.yaml` in the root 
 ```
 repos:
   - repo: https://github.com/swimmio/pre-commit
-    rev: v0.3 # (Check release tags for the latest release, currently v0.3)
+    rev: v0.4 # (Check release tags for the latest release, currently v0.4)
     hooks:
       - id: swimm-verify # Verifies documentation is in sync
-      - id: swimm-export # Exports to markdown (optional)
+```
+That should be all you need if you just want to run the verification checks locally, and treat failure like any other test failing.
+
+There are two more hooks explained in [hooks/](https://github.com/swimmio/pre-commit/tree/main/hooks) which you can optionally enable:
+
+```
+      - id: swimm-verify-nonblocking # Verifies documentation but doesn't block, opens an issue instead.
+      - id: swimm-export # (Illustrative only) Shows how you could set up your existing hooks to export your documentation to Docusaurus, Notion, Etc.
 ```
 
 If you already have a `.pre-commit-config.yaml` file, add the swimm checks as a new `- repo` section, wherever you'd like them to run. Note that if you have failure mode set to fast, no other checks will run if documentation can't be verified, so we recommend adding Swimm as the last (or close to last) check. 
