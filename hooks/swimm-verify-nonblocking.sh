@@ -13,6 +13,9 @@ BIN_APP=""
 # something here and then make it executable.
 BIN_PATH="$HOME"
 
+# We customize the download URL based on the OS (Linux/Mac supported)
+BIN_DOWNLOAD_SPEC=""
+
 # Swimm is (by default) in /usr/local/bin, so we want to make sure to look there.
 export PATH=$PATH:/usr/local/bin
 
@@ -43,17 +46,27 @@ verify_tmp() {
     }
 }
 
+# H/T to Paxdiablo for the idea of nesting this in a clever little switch
+resolve_os() {
+    local tmp="$(uname -s)" || error_out "Unable to determine machine type. Please contact support."
+    echo "OS is ${tmp}"
+    case "${tmp}" in
+        Linux*)     BIN_DOWNLOAD_SPEC="browser_download_url.*packed-swimm-linux-cli";;
+        Darwin*)    BIN_DOWNLOAD_SPEC="browser_download_url.*packed-swimm-osx-cli";;
+        *)          error_out "Your machine type ${tmp} isn't supported by this utility."
+    esac
+}
+
 download_cli() {
-    error_out "Downloading the CLI on-the-fly will be available soon."
     # This currently downloads a compiled script that still requires node, but will soon resolve to a 64 Bit ELF executable.
-    src=$($BIN_CURL -s https://api.github.com/repos/swimmio/SwimmReleases/releases/latest | grep 'browser_download_url.*swimm-cli' | cut -d '"' -f 4)
+    src=$(curl -s https://api.github.com/repos/swimmio/SwimmReleases/releases/latest | grep "${BIN_DOWNLOAD_SPEC}" | cut -d '"' -f 4)
     $BIN_WGET -O $BIN_PATH/swimm_cli $src
     chmod +x $BIN_PATH/swimm_cli
 }
 
 cleanup() {
     echo "Cleaning up..."
-    #rm -f $BIN_PATH/swimm_cli
+    rm -f $BIN_PATH/swimm_cli
 }
 
 webhook() {
@@ -77,8 +90,12 @@ verify_curl
 
 # If the desktop CLI is in the path, use it. Otherwise, grab the CLI executable.
 BIN_APP=$(which swimm) || {
+    # Should we run?
+    resolve_os
+    # Can we run?
     verify_wget
     verify_tmp
+    # Let's run
     download_cli
     [ -x $BIN_PATH/swimm_cli ] || {
         cleanup
