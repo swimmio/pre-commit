@@ -1,3 +1,6 @@
 {
-    "repo_id": "Z2l0aHViJTNBJTNBcHJlLWNvbW1pdCUzQSUzQXN3aW1taW8="
+    "repo_id": "Z2l0aHViJTNBJTNBcHJlLWNvbW1pdCUzQSUzQXN3aW1taW8=",
+    "configuration": {
+        "swmd": true
+    }
 }
