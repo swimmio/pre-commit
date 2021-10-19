@@ -75,7 +75,6 @@ webhook() {
         warn "Could not read enviormental variable SWIMM_VERIFY_WEBHOOK so I don't know who to call."
         return
     }
-    printf "Hi! I'm Webhook!\nContext is:\n%s\nDialing: %s\n" "$@" "$SWIMM_VERIFY_WEBHOOK"
     $BIN_CURL --data "context=$@" $SWIMM_VERIFY_WEBHOOK | grep success 2>&1 >/dev/null
     if [ $? -eq 0 ]; then
         printf "Webhook succeeded!"
