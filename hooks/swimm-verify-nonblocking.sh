@@ -51,16 +51,14 @@ resolve_os() {
     local tmp="$(uname -s)" || error_out "Unable to determine machine type. Please contact support."
     echo "OS is ${tmp}"
     case "${tmp}" in
-        Linux*)     BIN_DOWNLOAD_SPEC="browser_download_url.*packed-swimm-linux-cli";;
-        Darwin*)    BIN_DOWNLOAD_SPEC="browser_download_url.*packed-swimm-osx-cli";;
+        Linux*)     BIN_DOWNLOAD_SPEC="packed-swimm-linux-cli";;
+        Darwin*)    BIN_DOWNLOAD_SPEC="packed-swimm-osx-cli";;
         *)          error_out "Your machine type ${tmp} isn't supported by this utility."
     esac
 }
 
 download_cli() {
-    # This currently downloads a compiled script that still requires node, but will soon resolve to a 64 Bit ELF executable.
-    src=$(curl -s https://api.github.com/repos/swimmio/SwimmReleases/releases/latest | grep "${BIN_DOWNLOAD_SPEC}" | cut -d '"' -f 4)
-    $BIN_WGET -O $BIN_PATH/swimm_cli $src
+    $BIN_WGET -O $BIN_PATH/swimm_cli https://releases.swimm.io/ci/latest/${BIN_DOWNLOAD_SPEC}
     chmod +x $BIN_PATH/swimm_cli
 }
 
@@ -72,6 +70,8 @@ cleanup() {
 webhook() {
     [ -z "$SWIMM_VERIFY_WEBHOOK" ] && {
         warn "Could not read enviormental variable SWIMM_VERIFY_WEBHOOK so I don't know who to call."
+        warn "swimm_cli returned:"
+        warn "$@"
         return
     }
     $BIN_CURL --data "context=$@" $SWIMM_VERIFY_WEBHOOK | grep success 2>&1 >/dev/null
