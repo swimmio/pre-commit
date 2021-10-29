@@ -111,8 +111,8 @@ CONTEXT=$($BIN_APP verify 2>&1) || {
 	ret=$?
     echo "Swimm Verification Failed. Calling Webhook."
     webhook "$CONTEXT"
-    # Since we don't block the commit, we pretend everything is fine.
-    # That's cool, because we kicked off an issue.
+    # We want to block here. If that's not what you want, see the
+    # swimm-verify-nonblocking hook.
     exit $ret
 }
 
