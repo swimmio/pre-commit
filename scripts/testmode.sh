@@ -4,10 +4,13 @@
 # will cause verification to fail, or restore it. Think
 # of it like a rocker switch. Here for development.
 
+# It causes the verification to instantly fail because
+# no .swm folder exists.
+
 if [ -d ".swm" ]; then
     echo "Test mode off. Turning on."
-    mv .swm .swm1
+    mv .swm .swm-disabled
 else
     echo "Test mode on. Turning off."
-    mv .swm1 .swm
+    mv .swm-disabled .swm
 fi
