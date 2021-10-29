@@ -13,7 +13,7 @@ Put the following contents into `.pre-commit-config.yaml` in the root of your re
 ```yml
 repos:
   - repo: https://github.com/swimmio/pre-commit
-    rev: v0.5 # (Check release tags for the latest release, current is v0.5)
+    rev: v0.7 # (Check release tags for the latest release, current stable is v0.7)
     hooks:
       - id: swimm-verify # Verifies documentation is in sync
 ```
