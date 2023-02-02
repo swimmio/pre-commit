@@ -5,7 +5,7 @@ file_version: 1.1.1
 app_version: 1.1.0
 ---
 
-<div align="center"><img src="images/67f7dfc6-6572-4a26-b11a-262069273d91.jpeg" style="width:'50%'"/></div>
+<div align="center"><img src="https://firebasestorage.googleapis.com/v0/b/swimm-dev-content/o/repositories%2FZ2l0aHViJTNBJTNBcHJlLWNvbW1pdCUzQSUzQXN3aW1taW8%3D%2F6394c4ca-d545-4bd1-b0e5-0e977f83cb5c.png?alt=media&token=76bf3aab-43cf-4438-bd2c-a2d65e0f0181" style="width:'50%'"/></div>
 
 <br/>
 
